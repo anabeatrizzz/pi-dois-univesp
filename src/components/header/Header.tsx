@@ -5,7 +5,9 @@ import { Link, NavLink } from 'react-router-dom';
 export default function Header(){
   return(
     <header>
-      <img src={imgPamnet} alt="pamnet logo" />
+      <Link to="/">
+        <img src={imgPamnet} alt="pamnet logo" />
+      </Link>
     </header>
   )
 }
