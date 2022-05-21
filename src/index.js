@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import Home from './pages/home';
+import Apps from './pages/apps'
 import './fonts/Inter/Inter-VariableFont_slnt,wght.ttf'
 import reportWebVitals from './reportWebVitals';
 import {
@@ -19,7 +20,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<Home />} />
-      <Route exact path="/aplicativos" element={<></>} />
+      <Route exact path="/aplicativos" element={<Apps />} />
       <Route exact path="/empresa" element={<></>} />
       <Route exact path="/contato" element={<></>} />
       <Route exact path="/teste-de-velocidade" element={<></>} />
