@@ -3,10 +3,12 @@ import imgPamnet from '../../assets/pamnet-header.png';
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.css';
 import { Button, Grid } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
-export default function Header(){
-  
-  return(
+export default function Header() {
+  const location = useLocation();
+
+  return (
     <header style={styles.header}>
       <Link style={styles.link} to="/">
         <img
@@ -17,27 +19,39 @@ export default function Header(){
       <nav style={styles.nav}>
         <ul style={styles.ul}>
           <NavLink style={styles.navLink} to="/">
-            <li style={styles.li}>Início</li>
+            <li style={location.pathname === "/" ? styles.focusedLi : styles.li}>
+              Início
+            </li>
           </NavLink>
 
           <NavLink style={styles.navLink} to="#">
-            <li style={styles.li}>Aplicativos</li>
+            <li style={styles.li}>
+              Aplicativos
+            </li>
           </NavLink>
 
           <NavLink style={styles.navLink} to="#">
-            <li style={styles.li}>Empresa</li>
+            <li style={styles.li}>
+              Empresa
+            </li>
           </NavLink>
 
           <NavLink style={styles.navLink} to="#">
-            <li style={styles.li}>Contato</li>
+            <li style={styles.li}>
+              Contato
+            </li>
           </NavLink>
 
           <NavLink style={styles.navLink} to="#">
-            <li style={styles.li}>Teste sua velocidade</li>
+            <li style={styles.li}>
+              Teste sua velocidade
+            </li>
           </NavLink>
 
           <NavLink style={styles.navLink} to="#">
-            <li style={styles.li}>FAQ</li>
+            <li style={styles.li}>
+              FAQ
+            </li>
           </NavLink>
         </ul>
       </nav>
