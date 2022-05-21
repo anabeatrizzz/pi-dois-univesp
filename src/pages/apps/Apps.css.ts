@@ -25,6 +25,16 @@ const styles = {
     alignItems: "center"
   },
 
+  thirGridContainer: {
+    backgroundColor: colors.darkBlue,
+    display: "flex"
+  },
+
+  fourthGridContainer: {
+    backgroundColor: colors.lightGreen,
+    display: "flex"
+  },
+
   // firstGridContainer: {
   //   flexDirection: "column" as "column",
   //   display: "flex",
@@ -40,7 +50,8 @@ const styles = {
     fontFamily: "Inter",
     fontWeight: 400,
     fontSize: 24,
-    color: 'white'
+    color: 'white',
+    marginLeft: 10
   },
 
   logosContainer: {
