@@ -19,6 +19,11 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<Home />} />
+      <Route exact path="/aplicativos" element={<></>} />
+      <Route exact path="/empresa" element={<></>} />
+      <Route exact path="/contato" element={<></>} />
+      <Route exact path="/teste-de-velocidade" element={<></>} />
+      <Route exact path="/faq" element={<></>} />
     </Routes>
   </BrowserRouter>
 );
