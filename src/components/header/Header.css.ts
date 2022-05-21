@@ -1,4 +1,4 @@
-import colors from '../../assets/colors'
+import colors from '../../assets/colors';
 
 const styles = {
   header: {
@@ -52,7 +52,18 @@ const styles = {
     marginRight: 15,
     justifyContent: 'space-between',
     fontWeight: 700,
-    fontSize: 16
+    fontSize: 16,
+    fontFamily: "Inter"
+  },
+
+  focusedLi: {
+    color: colors.mostarda,
+    marginTop: 0,
+    marginRight: 15,
+    justifyContent: 'space-between',
+    fontWeight: 700,
+    fontSize: 16,
+    fontFamily: "Inter"
   },
 
   link: {
