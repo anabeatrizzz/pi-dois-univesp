@@ -1,10 +1,13 @@
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, Card, CardContent } from '@mui/material';
 import React from 'react';
 import WrapperPage from '../../components/wrapper-page';
 import styles from './Company.css';
 import Slider from "react-slick";
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
+import bestSatisfaction from '../../assets/maior-satisfacao.png';
+import bestProvider from '../../assets/melhor-provedor.png';
+import bestSpeed from '../../assets/melhor-velocidade.png';
 
 export default function Company() {
   const settings = {
@@ -32,38 +35,75 @@ export default function Company() {
 
         </Grid>
 
-        <Slider {...settings}>
-          <div>
-            <Typography align="center" style={styles.title}>MISSÃO</Typography>
-            <Typography style={styles.subtitle}>Ser reconhecida pelos funcionários, usuários e pela comunidade como a melhor empresa provedora de serviços de internet via fibra óptica da região.</Typography>
-          </div>
-          <div>
-            <Typography align="center" style={styles.title}>VISÃO</Typography>
-            <Typography style={styles.subtitle}>Competência, qualidade, eficiência e profissionalismo nos atendimentos e nos serviços prestados aos usuários e colaboradores.</Typography>
-          </div>
-          <div>
-            <Typography align="center" style={styles.title}>VALORES</Typography>
-            <Typography style={styles.subtitle}>✓ Conduta ética e profissional<br />✓ Transparência nas atitudes e comportamentos<br />✓ Busca constante da excelência no atendimento<br />✓ Aprimoramento técnico e profissional constante</Typography>
-          </div>
-          <div>
-            <Typography align="center" style={styles.title}>EMPREENDEDORISMO</Typography>
-            <Typography style={styles.subtitle}>Texto</Typography>
-          </div>
-          <div>
-            <Typography align="center" style={styles.title}>QUALIDADE DE INVESTIMENTO</Typography>
-            <Typography style={styles.subtitle}>Texto</Typography>
-          </div>
-          <div>
-            <Typography align="center" style={styles.title}>ATENDIMENTO</Typography>
-            <Typography style={styles.subtitle}>Somos focados sempre no compromisso em atender bem nossos usuários e os moradores de nossa cidade.</Typography>
-          </div>
-        </Slider>
+        <Grid container>
+          <Grid item xs={6}>
+            <Slider {...settings}>
+              <div>
+                <Typography align="center" style={styles.sliderTitle}>
+                  MISSÃO
+                </Typography>
+                <Typography style={{ ...styles.subtitle, fontSize: 16 }}>
+                  Ser reconhecida pelos funcionários, usuários e pela comunidade como a melhor empresa provedora de serviços de internet via fibra óptica da região.
+                </Typography>
+              </div>
+              <div>
+                <Typography align="center" style={styles.sliderTitle}>
+                  VISÃO
+                </Typography>
+                <Typography style={styles.sliderSubtitle}>Competência, qualidade, eficiência e profissionalismo nos atendimentos e nos serviços prestados aos usuários e colaboradores.</Typography>
+              </div>
+              <div>
+                <Typography align="center" style={styles.sliderTitle}>
+                  VALORES
+                </Typography>
+                <Typography style={styles.sliderSubtitle}>✓ Conduta ética e profissional<br />✓ Transparência nas atitudes e comportamentos<br />✓ Busca constante da excelência no atendimento<br />✓ Aprimoramento técnico e profissional constante</Typography>
+              </div>
+              <div>
+                <Typography align="center" style={styles.sliderTitle}>
+                  EMPREENDEDORISMO
+                </Typography>
+                <Typography style={styles.sliderSubtitle}>Como empreendedores em nossa cidade, Mongaguá, procuramos sempre crescer. Nossa conquista vem de uma prospecção de usuários muito boa.</Typography>
+              </div>
+              <div>
+                <Typography align="center" style={styles.sliderTitle}>
+                  QUALIDADE DE INVESTIMENTO
+                </Typography>
+                <Typography style={styles.sliderSubtitle}>Primeiro a instalação da base e repetidoras. Saímos da LP de dados para link em fibra óptica com capacidade de 500 Mbps. Hoje em 2020 contamos com mais de 40 Gbps em fibra óptica chegando em nossa sede para ser distribuído por nossos usuários.</Typography>
+              </div>
+              <div>
+                <Typography align="center" style={styles.sliderTitle}>
+                  ATENDIMENTO
+                </Typography>
+                <Typography style={styles.sliderSubtitle}>
+                  Somos focados sempre no compromisso em atender bem nossos usuários e os moradores de nossa cidade.
+                </Typography>
+              </div>
+            </Slider>
+
+          </Grid>
+
+          <Grid item xs={6}>
+            <Typography align="center" style={styles.cardTitle}>
+              RELATOS DOS CLIENTES
+            </Typography>
+            <Card style={styles.card}>
+              <CardContent></CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+
+        <Grid pt={5} container justifyContent="center" alignItems="center">
+          <Grid item>
+            <img src={bestSatisfaction} alt="prêmio de melhor satisfação" />
+          </Grid>
+          <Grid item>
+            <img src={bestProvider} alt="prêmio de melhor provedor" />
+          </Grid>
+          <Grid item>
+            <img src={bestSpeed} alt="prêmio de melhor velocidade" />
+          </Grid>
+        </Grid>
       </div>
-
-      {/* <div style={styles.grid}> */}
-        
-      {/* </div> */}
-
     </WrapperPage>
   )
 }
