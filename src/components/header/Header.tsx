@@ -24,8 +24,8 @@ export default function Header() {
             </li>
           </NavLink>
 
-          <NavLink style={styles.navLink} to="#">
-            <li style={styles.li}>
+          <NavLink style={styles.navLink} to="/aplicativos">
+            <li style={location.pathname === "/aplicativos" ? styles.focusedLi : styles.li}>
               Aplicativos
             </li>
           </NavLink>
