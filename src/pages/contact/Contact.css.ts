@@ -7,6 +7,14 @@ const styles = {
   subtitle: {
     fontFamily: "Inter",
     fontWeight: 400
+  },
+
+  btnTxt: {
+    color: 'black'
+  },
+
+  btn: {
+    borderColor: 'black'
   }
 }
 
