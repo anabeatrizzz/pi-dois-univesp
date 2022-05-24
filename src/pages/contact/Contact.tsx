@@ -48,7 +48,7 @@ export default function Contact() {
 
             <Grid pt={3} container justifyContent="center" alignItems="center">
               <Grid item xs={8}>
-                <TextField type="email" label="E-mail" variant="outlined" />
+                <TextField size="small" fullWidth type="email" label="E-mail" variant="outlined" />
                 <Typography pt={3} pb={3} align="center">Currículo em PDF</Typography>
                 
                 <Grid pb={3} container alignItems="center" justifyContent="flex-end" direction="row">

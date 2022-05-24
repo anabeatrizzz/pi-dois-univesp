@@ -10,7 +10,8 @@ const styles = {
   },
 
   btnTxt: {
-    color: 'black'
+    color: 'black',
+    textTransform: "capitalize" as "capitalize"
   },
 
   btn: {
