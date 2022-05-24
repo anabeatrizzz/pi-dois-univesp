@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Home from './pages/home';
 import Apps from './pages/apps';
+import Contact from './pages/contact'
 import Company from './pages/company';
 import './fonts/Inter/Inter-VariableFont_slnt,wght.ttf'
 import reportWebVitals from './reportWebVitals';
@@ -23,7 +24,7 @@ root.render(
       <Route exact path="/" element={<Home />} />
       <Route exact path="/aplicativos" element={<Apps />} />
       <Route exact path="/empresa" element={<Company />} />
-      <Route exact path="/contato" element={<></>} />
+      <Route exact path="/contato" element={<Contact />} />
       <Route exact path="/teste-de-velocidade" element={<></>} />
       <Route exact path="/faq" element={<></>} />
     </Routes>

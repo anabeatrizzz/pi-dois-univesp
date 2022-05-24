@@ -36,8 +36,8 @@ export default function Header() {
             </li>
           </NavLink>
 
-          <NavLink style={styles.navLink} to="#">
-            <li style={styles.li}>
+          <NavLink style={styles.navLink} to="/contato">
+            <li style={location.pathname === "/contato" ? styles.focusedLi : styles.li}>
               Contato
             </li>
           </NavLink>
