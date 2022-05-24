@@ -4,6 +4,8 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.css';
 import { Button, Grid } from '@mui/material';
 import { useLocation } from 'react-router-dom';
+import FBIcon from '../../assets/fb-icon.png';
+import IGIcon from '../../assets/ig-icon.png';
 
 export default function Header() {
   const location = useLocation();
@@ -48,20 +50,33 @@ export default function Header() {
             </li>
           </NavLink>
 
-          <NavLink style={styles.navLink} to="#">
-            <li style={styles.li}>
+          <NavLink style={styles.navLink} to="/faq">
+            <li style={location.pathname === "/faq" ? styles.focusedLi : styles.li}>
               FAQ
             </li>
           </NavLink>
+
+          <NavLink style={styles.navLink} to="#">
+            <li style={styles.li}>
+              Central de Atendimento
+            </li>
+          </NavLink>
+
+          <div style={styles.socialMediaDiv}>
+            <div style={styles.fbIcon}>
+              <a target="_blank" href="#">
+                <img width={30} height={30} src={FBIcon} />
+              </a>
+            </div>
+            <div>
+              <a target="_blank" href="#">
+                <img width={30} height={30} src={IGIcon} />
+              </a>
+            </div>
+          </div>
+
         </ul>
       </nav>
-
-      <Button
-        style={styles.button}
-        variant="contained"
-      >
-        <b style={styles.sacText}>SAC</b>
-      </Button>
     </header>
   )
 }
