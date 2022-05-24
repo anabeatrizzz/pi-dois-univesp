@@ -33,7 +33,18 @@ const styles = {
     display: 'block',
     justifyContent: 'center',
     alignContent: 'center',
-    //marginTop: 40
+    marginRight: 50
+  },
+
+  socialMediaDiv: {
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+    flexDirection: "row" as "row"
+  },
+
+  fbIcon: {
+    marginRight: 5
   },
 
   navLink: {
@@ -43,7 +54,8 @@ const styles = {
   ul: {
     display: 'flex',
     justifyContent: 'space-between',
-    listStyle: 'none'
+    listStyle: 'none',
+    alignItems: "center"
   },
 
   li: {
@@ -52,7 +64,7 @@ const styles = {
     marginRight: 15,
     justifyContent: 'space-between',
     fontWeight: 700,
-    fontSize: 16,
+    fontSize: 13,
     fontFamily: "Inter"
   },
 
@@ -62,7 +74,7 @@ const styles = {
     marginRight: 15,
     justifyContent: 'space-between',
     fontWeight: 700,
-    fontSize: 16,
+    fontSize: 13,
     fontFamily: "Inter"
   },
 
