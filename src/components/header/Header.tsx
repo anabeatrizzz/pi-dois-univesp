@@ -64,7 +64,7 @@ export default function Header() {
 
           <div style={styles.socialMediaDiv}>
             <div style={styles.fbIcon}>
-              <a target="_blank" href="#">
+              <a target="_blank" href="https://www.facebook.com/PAMNET.Mongagua">
                 <img width={30} height={30} src={FBIcon} />
               </a>
             </div>
