@@ -7,6 +7,7 @@ import Apps from './pages/apps';
 import Contact from './pages/contact'
 import Company from './pages/company';
 import Faq from './pages/faq';
+import TestSpeed from './pages/test-speed';
 import './fonts/Inter/Inter-VariableFont_slnt,wght.ttf'
 import reportWebVitals from './reportWebVitals';
 import {
@@ -26,7 +27,7 @@ root.render(
       <Route exact path="/aplicativos" element={<Apps />} />
       <Route exact path="/empresa" element={<Company />} />
       <Route exact path="/contato" element={<Contact />} />
-      <Route exact path="/teste-de-velocidade" element={<></>} />
+      <Route exact path="/teste-de-velocidade" element={<TestSpeed />} />
       <Route exact path="/faq" element={<Faq />} />
     </Routes>
   </BrowserRouter>
