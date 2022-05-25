@@ -69,7 +69,7 @@ export default function Header() {
               </a>
             </div>
             <div>
-              <a target="_blank" href="#">
+              <a target="_blank" href="https://www.instagram.com/pamnetfibraoptica/">
                 <img width={30} height={30} src={IGIcon} />
               </a>
             </div>
