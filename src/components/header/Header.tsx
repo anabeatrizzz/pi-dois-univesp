@@ -44,8 +44,8 @@ export default function Header() {
             </li>
           </NavLink>
 
-          <NavLink style={styles.navLink} to="/teste-de-velocidade">
-            <li style={location.pathname === "/teste-de-velocidade" ? styles.focusedLi : styles.li}>
+          <NavLink style={styles.navLink} to="#">
+            <li style={styles.li}>
               Teste sua velocidade
             </li>
           </NavLink>
