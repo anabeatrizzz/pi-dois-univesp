@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import imgPamnet from '../../assets/pamnet-header.png';
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.css';
@@ -16,23 +16,38 @@ export default function Header() {
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
   const [isExpanded, setExpanded] = useState(false);
 
+  useEffect(() => {
+    if(!matches){
+      setExpanded(false)
+    }
+  }, [matches])
+
   function txtColor(path: string){
-    if(path === location.pathname && isExpanded){
+    if((path === location.pathname) && isExpanded){
       return {
         ...styles.li,
         ...styles.focusedLi,
         ...styles.liExpanded
       }
     }
-    if(isExpanded){
+    
+    if(!(path === location.pathname) && !isExpanded) {
       return {
         ...styles.li,
-        ...styles.liExpanded,
       }
     }
-    if(!isExpanded){
+
+    if(!(path === location.pathname) && isExpanded) {
       return {
-        ...styles.li
+        ...styles.li,
+        ...styles.liExpanded
+      }
+    }
+
+    if(path === location.pathname){
+      return {
+        ...styles.li,
+        ...styles.focusedLi,
       }
     }
   }
@@ -98,11 +113,11 @@ export default function Header() {
                 Contato
               </li>
             </NavLink>
-            <NavLink style={styles.navLink} to="#">
+            <a style={styles.navLink} target="_blank" href="https://www.minhaconexao.com.br">
               <li style={txtColor("#")}>
                 Teste sua velocidade
               </li>
-            </NavLink>
+            </a>
             <NavLink style={styles.navLink} to="/faq">
               <li style={txtColor("/faq")}>
                 FAQ
