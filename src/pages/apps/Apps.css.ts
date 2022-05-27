@@ -61,9 +61,18 @@ const styles = {
     alignItems: "center"
   },
 
-  logos: {
-    width: "30%",
-    height: "30%"
+  logo: {
+    maxWidth: "60%",
+    height: "auto",
+    padding: 0,
+    margin: 0,
+  },
+
+  img: {
+    maxWidth: "100%",
+    height: "auto",
+    padding: 0,
+    margin: 0,
   }
 }
 

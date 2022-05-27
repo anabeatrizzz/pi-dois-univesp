@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import WrapperPage from "../../components/wrapper-page";
 import { Grid, Card, CardContent, Typography, Divider, useMediaQuery, useTheme } from '@mui/material';
 import styles from './Home.css';
@@ -9,7 +9,7 @@ export default function Home() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
-  function txtSize(type: "title" | "subtitle" | "focused") {
+  function txtSize(type: "title" | "subtitle") {
     if (matches && type === "title") {
       return {
         ...styles.title,
