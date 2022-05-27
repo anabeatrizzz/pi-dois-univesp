@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import imgPamnet from '../../assets/pamnet-header.png';
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.css';
-import clsx from 'clsx'
-import { Button, Grid, Typography, useMediaQuery, useTheme, IconButton } from '@mui/material';
+import { useMediaQuery, useTheme, IconButton } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import FBIcon from '../../assets/fb-icon.png';
 import IGIcon from '../../assets/ig-icon.png';
