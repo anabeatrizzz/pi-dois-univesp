@@ -14,6 +14,14 @@ const styles = {
     //paddingRight: 90
   },
 
+  navDiv: {
+    marginLeft: "auto"
+  },
+
+  navDivExpanded: {
+
+  },
+
   sacText: {
     fontWeight: 900,
     fontSize: '16px',
@@ -51,11 +59,36 @@ const styles = {
     textDecoration: 'none'
   },
 
+  liExpanded: {
+    fontSize: 20,
+    marginBottom: 10
+  },
+
   ul: {
     display: 'flex',
     justifyContent: 'space-between',
     listStyle: 'none',
     alignItems: "center"
+  },
+
+  ulResponsive: {
+    display: 'none',
+    
+    // justifyContent: 'space-between',
+    // listStyle: 'none',
+    // alignItems: "center"
+  },
+
+  ulExpanded: {
+    display: "block",
+    listStyle: 'none',
+    position: "absolute" as "absolute",
+    top: "60px",
+    left: 0,
+    flexDirection: "column" as "column",
+    width: "100%",
+    height: "calc(100vh - 77px)",
+    backgroundColor: colors.purple
   },
 
   li: {
@@ -69,19 +102,26 @@ const styles = {
   },
 
   focusedLi: {
-    color: colors.mostarda,
-    marginTop: 0,
-    marginRight: 15,
-    justifyContent: 'space-between',
-    fontWeight: 700,
-    fontSize: 13,
-    fontFamily: "Inter"
+    color: colors.mostarda
+  },
+
+  liResponsive: {
+    textAlign: "center" as "center",
+    margin: 0
   },
 
   link: {
     display: 'flex',
     textDecoration: 'none'
   },
+
+  linkResponsive: {
+    display: 'block',
+    textDecoration: 'none',
+    justifyContent: "center",
+    alignItems: "center",
+    selfAlign: "center"
+  }
 }
 
 export default styles
