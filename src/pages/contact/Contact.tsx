@@ -40,7 +40,8 @@ export default function Contact() {
 
         <Grid container justifyContent="center" alignItems="center">
           <Grid item xs={matches ? 12 : 6}>
-            <Typography align="center">MAPA</Typography>
+            {/* <Typography align="center">MAPA</Typography> */}
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qSXWA_oIh_aIOeWl1vFqfTHphSll9UU&ehbc=2E312F" width="530" height="400"></iframe>
           </Grid>
 
           <Grid item xs={matches ? 12 : 6}>
