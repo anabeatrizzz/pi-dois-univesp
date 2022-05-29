@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Grid, Typography, TextField, Button, useMediaQuery, useTheme } from '@mui/material';
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import WrapperPage from '../../components/wrapper-page';
 import styles from './Contact.css';
 import { useDropzone } from 'react-dropzone';
@@ -11,19 +11,26 @@ import * as Yup from 'yup';
 export default function Contact() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const [filePath, setFilePath] = useState("");
   const recaptchaRef = useRef(null);
   const formik = useFormik({
     initialValues: {
-      email: ""
+      email: "",
+      filePath: filePath
     },
     validationSchema: Yup.object({
-      emai: Yup
+      email: Yup
         .string()
         .email("Informe um e-mail válido")
         .required("Informe seu e-mail")
     }),
-    onSubmit: () => {
-      alert("clicou")
+    onSubmit: (_, actions) => {
+      if(filePath === ""){
+        alert("Você não anexou nenhum arquivo de currículo")
+      } else {
+        alert("Currículo enviado")
+        actions.resetForm()
+      }
     }
     // onSubmit: async() => {
     //   const captchaToken = await recaptchaRef.current.executeAsync();
@@ -40,11 +47,11 @@ export default function Contact() {
     }
   });
 
-  const acceptedFileItems = acceptedFiles.map(file => (
-    <Typography noWrap variant="subtitle2" align="center" key={file.path}>
-      {file.path}
-    </Typography>
-  ));
+  useEffect(() => {
+    if (acceptedFiles.length !== 0) {
+      setFilePath(acceptedFiles[0].name)
+    }
+  }, [acceptedFiles, filePath])
 
   return (
     <WrapperPage>
@@ -98,10 +105,7 @@ export default function Contact() {
 
                   <Typography pt={3} pb={3} align="center">
                     Currículo em PDF
-                    {acceptedFileItems}
                   </Typography>
-
-                  
 
                   <Grid pb={3} container alignItems="center" justifyContent="center" direction="row">
                     <Grid
@@ -109,8 +113,10 @@ export default function Contact() {
                       item
                       xs={matches ? 12 : 6}
                     >
-                      <input {...getInputProps()} />
-                      
+                      <input
+                        {...getInputProps()}
+                      />
+
                       <Button
                         style={styles.btn}
                         size="small"
@@ -135,7 +141,9 @@ export default function Contact() {
                         style={styles.btn}
                         variant="outlined"
                       >
-                        <Typography variant="subtitle2" style={styles.btnTxt}>Enviar</Typography>
+                        <Typography variant="subtitle2" style={styles.btnTxt}>
+                          Enviar
+                        </Typography>
                       </Button>
                     </Grid>
                   </Grid>
@@ -143,8 +151,10 @@ export default function Contact() {
                 <Grid item xs={4}>
                   <ReCAPTCHA
                     ref={recaptchaRef}
-                    sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
                     size="compact"
+                    hl="pt"
+                    // @ts-ignore
+                    sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
                   />
                 </Grid>
               </Grid>
