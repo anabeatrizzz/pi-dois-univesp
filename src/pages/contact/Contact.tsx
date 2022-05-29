@@ -1,14 +1,37 @@
+// @ts-nocheck
 import { Grid, Typography, TextField, Button, useMediaQuery, useTheme } from '@mui/material';
-import React from 'react';
+import React, { useRef } from 'react';
 import WrapperPage from '../../components/wrapper-page';
 import styles from './Contact.css';
-import { useDropzone } from 'react-dropzone'
+import { useDropzone } from 'react-dropzone';
+import ReCAPTCHA from "react-google-recaptcha";
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 export default function Contact() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const recaptchaRef = useRef(null);
+  const formik = useFormik({
+    initialValues: {
+      email: ""
+    },
+    validationSchema: Yup.object({
+      emai: Yup
+        .string()
+        .email("Informe um e-mail válido")
+        .required("Informe seu e-mail")
+    }),
+    onSubmit: () => {
+      alert("clicou")
+    }
+    // onSubmit: async() => {
+    //   const captchaToken = await recaptchaRef.current.executeAsync();
+    //   recaptchaRef.current.reset();
+    // }
+  })
 
-  const { getInputProps, open, getRootProps } = useDropzone({
+  const { getInputProps, open, getRootProps, acceptedFiles } = useDropzone({
     noClick: true,
     noKeyboard: true,
     maxFiles: 1,
@@ -16,6 +39,12 @@ export default function Contact() {
       'application/pdf': [".pdf"]
     }
   });
+
+  const acceptedFileItems = acceptedFiles.map(file => (
+    <Typography noWrap variant="subtitle2" align="center" key={file.path}>
+      {file.path}
+    </Typography>
+  ));
 
   return (
     <WrapperPage>
@@ -41,63 +70,85 @@ export default function Contact() {
         <Grid container justifyContent="center" alignItems="center">
           <Grid item xs={matches ? 12 : 6}>
             {/* <Typography align="center">MAPA</Typography> */}
-            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qSXWA_oIh_aIOeWl1vFqfTHphSll9UU&ehbc=2E312F" width="530" height="400"></iframe>
+            <iframe title="mapa com endereço da pamnet" src="https://www.google.com/maps/d/u/0/embed?mid=1qSXWA_oIh_aIOeWl1vFqfTHphSll9UU&ehbc=2E312F" width="530" height="400"></iframe>
           </Grid>
 
           <Grid item xs={matches ? 12 : 6}>
             <Typography style={styles.title} align="center">VENHA TRABALHAR NA PAMNET</Typography>
             <Typography style={styles.subtitle} align="justify">
-              Acreditamos que investir em nossos funcionários é trazer mais qualidade ao nosso negócio e aos nossos serviços. Por isso, estamos sempre em busca de novos talentos dispostos a dividir esse sonho.<br/><br/>Buscamos profissionais comprometidos com a satisfação de nossos usuarios e com o crescimento da empresa, que gostem de aprender e queiram evoluir conosco. Se você tem esse perfil, envie seu currículo e venha integrar nossa equipe!
+              Acreditamos que investir em nossos funcionários é trazer mais qualidade ao nosso negócio e aos nossos serviços. Por isso, estamos sempre em busca de novos talentos dispostos a dividir esse sonho.<br /><br />Buscamos profissionais comprometidos com a satisfação de nossos usuarios e com o crescimento da empresa, que gostem de aprender e queiram evoluir conosco. Se você tem esse perfil, envie seu currículo e venha integrar nossa equipe!
             </Typography>
 
-            <Grid pt={3} container justifyContent="center" alignItems="center">
-              <Grid item xs={8}>
-                <TextField size="small" fullWidth type="email" label="E-mail" variant="outlined" />
-                <Typography pt={3} pb={3} align="center">Currículo em PDF</Typography>
-                
-                <Grid pb={3} container alignItems="center" justifyContent="flex-end" direction="row">
-                  <Grid
-                    {...getRootProps({ className: 'dropzone' })}
-                    item
-                    xs={matches ? 12 : 6}
-                  >
-                    <input {...getInputProps()} />
-                    <Button
-                      style={styles.btn}
-                      size="small"
-                      disableElevation
-                      type="button"
-                      onClick={open}
-                      variant="outlined"
-                    >
-                      <Typography
-                        variant="subtitle2"
-                        style={styles.btnTxt}
-                      >
-                        Escolher arquivo
-                      </Typography>
-                    </Button>
-                  </Grid>
+            <form noValidate onSubmit={formik.handleSubmit}>
+              <Grid pt={3} container justifyContent="center" alignItems="center">
+                <Grid item xs={8}>
+                  <TextField
+                    id="email"
+                    size="small"
+                    fullWidth
+                    type="email"
+                    label="E-mail"
+                    variant="outlined"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
+                    required
+                  />
 
-                  <Grid item xs={matches ? 12 : 6}>
-                    <Button
-                      size="small"
-                      disableElevation
-                      type="submit"
-                      style={styles.btn}
-                      variant="outlined"
+                  <Typography pt={3} pb={3} align="center">
+                    Currículo em PDF
+                    {acceptedFileItems}
+                  </Typography>
+
+                  
+
+                  <Grid pb={3} container alignItems="center" justifyContent="center" direction="row">
+                    <Grid
+                      {...getRootProps({ className: 'dropzone' })}
+                      item
+                      xs={matches ? 12 : 6}
                     >
-                      <Typography variant="subtitle2" style={styles.btnTxt}>Enviar</Typography>
-                    </Button>
+                      <input {...getInputProps()} />
+                      
+                      <Button
+                        style={styles.btn}
+                        size="small"
+                        disableElevation
+                        type="button"
+                        onClick={open}
+                        variant="outlined"
+                      >
+                        <Typography
+                          variant="subtitle2"
+                          style={styles.btnTxt}
+                        >
+                          Escolher arquivo
+                        </Typography>
+                      </Button>
+                    </Grid>
+                    <Grid item xs={matches ? 12 : 6}>
+                      <Button
+                        size="small"
+                        disableElevation
+                        type="submit"
+                        style={styles.btn}
+                        variant="outlined"
+                      >
+                        <Typography variant="subtitle2" style={styles.btnTxt}>Enviar</Typography>
+                      </Button>
+                    </Grid>
                   </Grid>
                 </Grid>
-                
+                <Grid item xs={4}>
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                    size="compact"
+                  />
+                </Grid>
               </Grid>
-
-              <Grid item xs={4}>
-                VERIFICAÇAO ROBO
-              </Grid>
-            </Grid>
+            </form>
           </Grid>
         </Grid>
       </Grid>
