@@ -112,7 +112,7 @@ export default function Header() {
                 Contato
               </li>
             </NavLink>
-            <a style={styles.navLink} target="_blank" href="https://www.minhaconexao.com.br">
+            <a style={styles.navLink} rel="noreferrer" target="_blank" href="https://www.minhaconexao.com.br">
               <li style={txtColor("#")}>
                 Teste sua velocidade
               </li>
@@ -122,20 +122,20 @@ export default function Header() {
                 FAQ
               </li>
             </NavLink>
-            <NavLink style={styles.navLink} to="#">
+            <a style={styles.navLink} rel="noreferrer" target="_blank" href="http://cc.pamnet.com.br:60280/sac/login/?sys=SAC">
               <li style={txtColor("#")}>
                 Central de Atendimento
               </li>
-            </NavLink>
+            </a>
             <div style={styles.socialMediaDiv}>
               <div style={styles.fbIcon}>
-                <a target="_blank" href="https://www.facebook.com/PAMNET.Mongagua">
-                  <img width={30} height={30} src={FBIcon} />
+                <a target="_blank" rel="noreferrer" href="https://www.facebook.com/PAMNET.Mongagua">
+                  <img width={30} alt="ícone do facebook" height={30} src={FBIcon} />
                 </a>
               </div>
               <div>
-                <a target="_blank" href="https://www.instagram.com/pamnetfibraoptica/">
-                  <img width={30} height={30} src={IGIcon} />
+                <a target="_blank" rel="noreferrer" href="https://www.instagram.com/pamnetfibraoptica/">
+                  <img width={30} alt="ícone do instagram" height={30} src={IGIcon} />
                 </a>
               </div>
             </div>

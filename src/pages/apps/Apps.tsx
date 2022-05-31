@@ -25,6 +25,10 @@ export default function Apps() {
         ...styles.description,
         fontSize: 20
       }
+    } else {
+      return {
+        ...styles.description,
+      }
     }
   }
 
