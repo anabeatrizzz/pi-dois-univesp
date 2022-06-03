@@ -27,6 +27,10 @@ const styles = {
     fontSize: 20,
     color: 'white'
   },
+
+  link: {
+    textDecoration: 'none'
+  }
 }
 
 export default styles

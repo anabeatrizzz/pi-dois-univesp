@@ -1,2 +1,2 @@
-import CardContent from "./CardContent";
-export { CardContent };
+import { CardContent, Banner } from "./CardContent";
+export { CardContent, Banner };

@@ -1,8 +1,7 @@
 import { Divider, Typography, useMediaQuery, useTheme } from '@mui/material';
 import React from 'react';
 import styles from './TextBlock.css';
-import { Link, useMatch, useResolvedPath, } from 'react-router-dom';
-import type { LinkProps } from "react-router-dom";
+import { Link, useMatch, useResolvedPath, useLocation } from 'react-router-dom';
 
 interface ITextBlock {
   path: string;
@@ -11,30 +10,18 @@ interface ITextBlock {
 
 export default function TextBlock(props: ITextBlock) {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('sm'));
-  // style={matches ? { ...styles.focusedSubtitle, fontSize: 15 } : styles.focusedSubtitle}
+  const location = useLocation();
+  const matchesMobile = useMediaQuery(theme.breakpoints.down('sm'));
   let resolved = useResolvedPath(props.path);
-  let match = useMatch({ path: resolved.pathname, end: true });
+  let matchesPath = useMatch({ path: resolved.pathname, end: true });
 
-  function txtSize(type: "title" | "subtitle") {
-    if (matches && type === "title") {
-      return {
-        ...styles.title,
-        fontSize: 15,
-        marginRight: 10
-      }
-    } else if (!(matches) && type === "title") {
-      return {
-        ...styles.title
-      }
-    }
-
-    if (matches && type === "subtitle") {
+  function txtSize() {
+    if (matchesMobile) {
       return {
         ...styles.subtitle,
         fontSize: 15
       }
-    } else if (!(matches) && type === "subtitle") {
+    } else if (!(matchesMobile)) {
       return {
         ...styles.subtitle
       }
@@ -42,19 +29,25 @@ export default function TextBlock(props: ITextBlock) {
   }
 
   function focusedTxt(){
-    if(match){
+    if(matchesPath && matchesMobile){
+      return {
+        ...styles.focusedSubtitle,
+        fontSize: 15
+      }
+    } else if(matchesPath && !matchesMobile) {
       return {
         ...styles.focusedSubtitle
       }
-    } else {
-      return undefined
     }
   }
 
   return (
     <div>
-      <Link style={{ textDecoration: 'none' }} to={props.path}>
-        <Typography style={{...txtSize("subtitle"), ...focusedTxt() }}>
+      <Link style={styles.link} to={props.path}>
+        <Typography
+          style={
+            {...txtSize(), ...focusedTxt(), }}
+        >
           {props.text}
         </Typography>
       </Link>
