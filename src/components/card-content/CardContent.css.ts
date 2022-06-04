@@ -8,6 +8,8 @@ const styles = {
   },
 
   img: {
+    // maxWidth: "100%",
+    // height: "auto"
     width: "80%",
     height: "80%"
   }
