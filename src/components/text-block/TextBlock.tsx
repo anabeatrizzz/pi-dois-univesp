@@ -29,12 +29,22 @@ export default function TextBlock(props: ITextBlock) {
   }
 
   function focusedTxt(){
+    // if same path and is mobile
     if(matchesPath && matchesMobile){
       return {
         ...styles.focusedSubtitle,
         fontSize: 15
       }
-    } else if(matchesPath && !matchesMobile) {
+    }
+    
+    // if same path but not mobile
+    else if(matchesPath && !matchesMobile) {
+      return {
+        ...styles.focusedSubtitle
+      }
+    }
+
+    else if(location.pathname === "/" && props.path === "/combos-promocionais"){
       return {
         ...styles.focusedSubtitle
       }

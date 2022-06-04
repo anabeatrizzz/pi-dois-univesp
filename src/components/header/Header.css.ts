@@ -18,10 +18,6 @@ const styles = {
     marginLeft: "auto"
   },
 
-  navDivExpanded: {
-
-  },
-
   sacText: {
     fontWeight: 900,
     fontSize: '16px',
@@ -82,12 +78,14 @@ const styles = {
   ulExpanded: {
     display: "block",
     listStyle: 'none',
+    paddingTop: 10,
     position: "absolute" as "absolute",
+    zIndex: 2,
     top: "60px",
     left: 0,
     flexDirection: "column" as "column",
     width: "100%",
-    height: "calc(100vh - 77px)",
+    height: "calc(100vh)",
     backgroundColor: colors.purple
   },
 
