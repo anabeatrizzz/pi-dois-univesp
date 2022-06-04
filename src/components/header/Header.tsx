@@ -74,7 +74,7 @@ export default function Header() {
 
   return (
     <header style={styles.header}>
-      <Link style={matches ? styles.linkResponsive : styles.link} to="/">
+      <Link style={matches ? styles.linkResponsive : styles.link} to="/combos-promocionais">
         <img
           src={imgPamnet}
           alt="pamnet logo"
@@ -92,8 +92,8 @@ export default function Header() {
             ) : <></>
           }
           <ul style={ulStyle()}>
-            <NavLink style={styles.navLink} to="/">
-              <li style={txtColor("/")}>
+            <NavLink style={styles.navLink} to="/combos-promocionais">
+              <li style={txtColor("/combos-promocionais")}>
                 Início
               </li>
             </NavLink>

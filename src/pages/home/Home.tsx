@@ -2,34 +2,29 @@ import React from "react";
 import WrapperPage from "../../components/wrapper-page";
 import { Grid, Card, CardContent, Typography, Divider, useMediaQuery, useTheme } from '@mui/material';
 import styles from './Home.css';
-import combo65 from '../../assets/combo-65.png';
-import combo1GB from '../../assets/combo-65.png';
+import { Banner } from "../../components/card-content";
+import TextBlock from "../../components/text-block";
+import { useLocation } from "react-router";
 
-export default function Home() {
+interface IHome {
+  path?: string;
+}
+
+export default function Home(props: IHome) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const location = useLocation();
 
-  function txtSize(type: "title" | "subtitle") {
-    if (matches && type === "title") {
+  function txtSize() {
+    if (matches) {
       return {
         ...styles.title,
         fontSize: 15,
         marginRight: 10
       }
-    } else if (!(matches) && type === "title") {
+    } else if (!(matches)) {
       return {
         ...styles.title
-      }
-    }
-
-    if (matches && type === "subtitle") {
-      return {
-        ...styles.subtitle,
-        fontSize: 15
-      }
-    } else if (!(matches) && type === "subtitle") {
-      return {
-        ...styles.subtitle
       }
     }
   }
@@ -42,37 +37,15 @@ export default function Home() {
             <CardContent
               style={matches ? { ...styles.cardContent, flexDirection: "row" } : styles.cardContent}
             >
-              <Typography style={txtSize("title")}>
+              <Typography style={txtSize()}>
                 Planos
               </Typography>
 
-              <div>
-                <Typography style={matches ? { ...styles.focusedSubtitle, fontSize: 15 } : styles.focusedSubtitle}>
-                  Combos promocionais
-                </Typography>
-                <Divider style={styles.divider} flexItem />
-              </div>
+              <TextBlock path={"/combos-promocionais"} text={"Combos promocionais"} />
+              <TextBlock path={"/internet-residencial"} text={"Internet residêncial"} />
+              <TextBlock path={"/internet-empresarial"} text={"Internet empresárial"} />
+              <TextBlock path={"/link-dedicado"} text={"Link dedicado"} />
 
-              <div>
-                <Typography style={txtSize("subtitle")}>
-                  Internet residêncial
-                </Typography>
-                <Divider style={styles.divider} flexItem />
-              </div>
-
-              <div>
-                <Typography style={txtSize("subtitle")}>
-                  Internet empresárial
-                </Typography>
-                <Divider style={styles.divider} flexItem />
-              </div>
-
-              <div>
-                <Typography style={txtSize("subtitle")}>
-                  Link dedicado
-                </Typography>
-                <Divider style={styles.divider} flexItem />
-              </div>
             </CardContent>
 
             {
@@ -84,51 +57,15 @@ export default function Home() {
             }
 
             {
-              !matches ? (
-                <CardContent style={styles.secondCardContent}>
-                  <div>
-                    <img
-                      src={combo65}
-                      width={"80%"}
-                      height={"80%"}
-                      alt="banner com informações sobre o plano de combo 65"
-                    />
-                  </div>
-
-                  <div>
-                    <img
-                      src={combo1GB}
-                      width={"80%"}
-                      height={"80%"}
-                      alt="banner com informações sobre o plano de combo de 1 gb"
-                    />
-                  </div>
-                </CardContent>
-              ) : (<></>)
+              (location.pathname === props.path && !matches) ? (
+                <Banner path={props.path} />
+              ) : <></>
             }
           </Card>
           {
-            matches ? (
-              <CardContent style={{...styles.secondCardContent, flexDirection: "column"}}>
-                <div>
-                  <img
-                    src={combo65}
-                    width={"80%"}
-                    height={"80%"}
-                    alt="banner com informações sobre o plano de combo 65"
-                  />
-                </div>
-
-                <div>
-                  <img
-                    src={combo1GB}
-                    width={"80%"}
-                    height={"80%"}
-                    alt="banner com informações sobre o plano de combo de 1 gb"
-                  />
-                </div>
-              </CardContent>
-            ) : (<></>)
+            (location.pathname === props.path && matches) ? (
+              <Banner path={props.path} />
+            ) : <></>
           }
         </Grid>
       </Grid>

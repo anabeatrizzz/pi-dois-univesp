@@ -22,7 +22,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route exact path="/" element={<Home />} />
+      <Route exact path="/" element={<Home path="/" />} />
+      <Route exact path="/combos-promocionais" element={<Home path={"/combos-promocionais"} />} />
+      <Route exact path="/internet-residencial" element={<Home path="/internet-residencial" />} />
+      <Route exact path="/internet-empresarial" element={<Home path="/internet-empresarial" />} />
+      <Route exact path="/link-dedicado" element={<Home path="/link-dedicado" />} />
       <Route exact path="/aplicativos" element={<Apps />} />
       <Route exact path="/empresa" element={<Company />} />
       <Route exact path="/contato" element={<Contact />} />

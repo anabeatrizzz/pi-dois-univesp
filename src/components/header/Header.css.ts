@@ -4,7 +4,7 @@ const styles = {
   header: {
     display: 'flex',
     zIndex: 1,
-    justifyContent: 'space-between',
+    //justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
     //boxSizing: "border-box",
@@ -41,7 +41,7 @@ const styles = {
     display: 'block',
     justifyContent: 'center',
     alignContent: 'center',
-    marginRight: 50
+    //marginRight: 50
   },
 
   socialMediaDiv: {
