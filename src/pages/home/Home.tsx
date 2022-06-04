@@ -61,9 +61,21 @@ export default function Home(props: IHome) {
                 <Banner path={props.path} />
               ) : <></>
             }
+
+            {
+              (location.pathname === "/" && props.path === "/combos-promocionais" && !matches) ? (
+                <Banner path={props.path} />
+              ) : <></>
+            }
           </Card>
           {
             (location.pathname === props.path && matches) ? (
+              <Banner path={props.path} />
+            ) : <></>
+          }
+
+          {
+            (location.pathname === "/" && props.path === "/combos-promocionais" && matches) ? (
               <Banner path={props.path} />
             ) : <></>
           }

@@ -73,7 +73,7 @@ export default function Header() {
   }
 
   return (
-    <header style={styles.header}>
+    <header style={!matches ? styles.header : {...styles.header, justifyContent: 'space-between'}}>
       <Link style={matches ? styles.linkResponsive : styles.link} to="/combos-promocionais">
         <img
           src={imgPamnet}
