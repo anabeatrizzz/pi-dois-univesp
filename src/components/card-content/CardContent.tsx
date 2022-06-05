@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import { CardContent as MUICardContent, Grid, useMediaQuery, useTheme } from '@mui/material';
 import styles from './CardContent.css';
@@ -14,6 +13,7 @@ import netEmpresarial750 from "../../assets/internet-empresarial-750-megas.png"
 import linkDedicado80 from "../../assets/link-dedicado-80-megas.png"
 import linkDedicado120 from "../../assets/link-dedicado-120-megas.png"
 import linkDedicado400 from "../../assets/link-dedicado-400-megas.png"
+import OtherBanner from "../../components/banner";
 
 interface ICardContent {
   data: { src: any; alt: string; }[]
@@ -40,18 +40,19 @@ export function CardContent(props: ICardContent) {
 
   return (
     <MUICardContent style={styles.secondCardContent}>
-        <Grid item xs={imgsCount === 2 ? 11 : matches ? 11 : 6}>
+        <Grid item xs={imgsCount === 2 ? 11 : matches ? 11 : 11}>
           <Slider {...settings}>
             {
               props.data.map((value, index) => {
                 return (
-                  <div key={index}>
-                    <img
-                      src={value.src}
-                      style={styles.img}
-                      alt={value.alt}
-                    />
-                  </div>
+                  // <div key={index}>
+                  //   <img
+                  //     src={value.src}
+                  //     style={styles.img}
+                  //     alt={value.alt}
+                  //   />
+                  // </div>
+                  <OtherBanner />
                 )
               })
             }
